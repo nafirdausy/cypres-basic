@@ -40,7 +40,18 @@ describe('User Can Delete Data', () => {
     //cy.get('.text-danger').click();
   })
 
-  it.only('user can cancel delete data', () => {
+  it.only('user can delete data Another Admin', () => {
+    cy.get('.table td').contains('AnotherAdmin').parent().find('button').contains('Delete').click();
+    cy.get('.swal-button-container').find('button').contains('OK').click();
+    cy.get('.alert')
+      .should('be.visible')
+      .and('have.class', 'alert-success')
+      .contains('User Deleted Successfully');
+    cy.get('.table').should('not.contain', 'AnotherAdmin');
+
+  })
+
+  it('user can cancel delete data', () => {
     //cy.get(':nth-child(3) > .text-right > .d-flex > .ml-2 > .btn').click();
     //cy.get(':nth-child(1) > .swal-button').click();
     //cy.get('.table > tbody > :nth-child(3) > :nth-child(2)').contains('user');
