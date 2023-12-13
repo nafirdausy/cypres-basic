@@ -1,9 +1,9 @@
 describe('User Can Edit Existing Data', () => {
-  afterEach(() => {
-    cy.exec(
-     "cd ../demo-app-cypress-automation && php artisan migrate:fresh --seed"
-    );
-  });
+  //afterEach(() => {
+  //  cy.exec(
+  //   "cd ../demo-app-cypress-automation && php artisan migrate:fresh --seed"
+  //  );
+  //});
 
   beforeEach(() => {
     //arrange
@@ -31,7 +31,7 @@ describe('User Can Edit Existing Data', () => {
     .contains('User Berhasil Diupdate');
   });
 
-  it.only('user can edit username userBaru', () => {
+  it('user can edit username userBaru', () => {
     cy.get('.table td').contains('userBaru').parent().find('a').contains('Edit').click();
     cy.get('#name').clear('userBaru ');
     cy.get('#name').type('user edited');
@@ -81,10 +81,46 @@ describe('User Can Edit Existing Data', () => {
   });
 
   //negative
-  it('user can edit email', () => {
+  it('user cant edit email', () => {
     cy.get('.table td').contains('user').parent().find('a').contains('Edit').click();
     cy.get('#email').clear('user@gmail.com');
     cy.get('#email').type('superadmin@gmail.com');
     cy.get('.btn-primary').contains('Submit').click();
   });
+
+  it('user cant edit data with blank username', () => {
+    cy.get('.table td').contains('user').parent().find('a').contains('Edit').click();
+    cy.get('#name').clear('user ');
+    cy.get('.btn-primary').contains('Submit').click();
+    cy.get('.invalid-feedback').should('be.visible');
+    cy.get('.invalid-feedback').should('have.class', 'invalid-feedback');
+    cy.get('.invalid-feedback')
+    .should('contain', 'The name field is required.');
+  });
+
+  it('user cant edit data with blank email', () => {
+    cy.get('.table td').contains('user').parent().find('a').contains('Edit').click();
+    cy.get('#email').clear('user ');
+    cy.get('.btn-primary').contains('Submit').click();
+    cy.get('.invalid-feedback').should('be.visible');
+    cy.get('.invalid-feedback').should('have.class', 'invalid-feedback');
+    cy.get('.invalid-feedback')
+    .should('contain', 'The email field is required.');
+  });
+
+  it.only('user cant edit data with all blank field', () => {
+    cy.get('.table td').contains('user').parent().find('a').contains('Edit').click();
+    cy.get('#name').clear('user ');
+    cy.get('#email').clear('user ');
+    cy.get('.btn-primary').contains('Submit').click();
+    cy.get('#name').next()
+    .should('be.visible')
+    .and('have.class', 'invalid-feedback')
+    .and('contain', 'The name field is required.');
+    cy.get('#email').next()
+    .should('be.visible')
+    .and('have.class', 'invalid-feedback')
+    .and('contain', 'The email field is required.');
+  });
+  
 });

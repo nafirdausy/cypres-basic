@@ -1,0 +1,108 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-11-15T16:17:01.223Z",
+    "end": "2023-11-15T16:17:09.745Z",
+    "duration": 8522,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6e5f47eb-6dc5-4693-82f5-8ac832f0170e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\user-can-logout.cy.js",
+      "file": "cypress\\e2e\\user-can-logout.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c05b5e67-f85b-4f04-9d1b-961471f0c225",
+          "title": "User Can Logout",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "user can logout",
+              "fullTitle": "User Can Logout user can logout",
+              "timedOut": null,
+              "duration": 5796,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "\"../videos/user-can-logout.cy.js.mp4\"",
+              "code": "cy.visit('http://127.0.0.1:8000/');\ncy.get('[data-id=\"email\"]').type('superadmin@gmail.com');\ncy.get('[data-id=\"password\"]').type('password');\ncy.get('[data-id=\"submit\"]').click();\ncy.get('[data-id=\"username\"]').click();\ncy.get('[data-id=\"logout-btn\"]').click();",
+              "err": {},
+              "uuid": "1c2f36be-64ea-49e3-8b8f-32df278aa16f",
+              "parentUUID": "c05b5e67-f85b-4f04-9d1b-961471f0c225",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1c2f36be-64ea-49e3-8b8f-32df278aa16f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5796,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[name].html",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "useInlineDiffs": true,
+        "embeddedScreenshots": true,
+        "reportDir": "cypress/results",
+        "reportFilename": "[name].html",
+        "overwrite": true,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
